@@ -1,4 +1,4 @@
-package pl.coderslab.entity;
+package pl.coderslab.charity.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
