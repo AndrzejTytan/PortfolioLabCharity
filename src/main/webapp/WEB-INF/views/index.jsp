@@ -90,8 +90,8 @@
                     <li>
                 </c:if>
                 <div class="col">
-                    <div class="title"><c:url value="${institution.name}"/></div>
-                    <div class="subtitle"><c:url value="${institution.description}"/></div>
+                    <div class="title"><c:out value="${institution.name}"/></div>
+                    <div class="subtitle"><c:out value="${institution.description}"/></div>
                 </div>
                 <c:if test="${status.count % 2 == 0}">
                     </li>

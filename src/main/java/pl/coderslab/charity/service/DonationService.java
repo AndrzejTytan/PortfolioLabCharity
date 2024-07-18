@@ -3,8 +3,6 @@ package pl.coderslab.charity.service;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.repository.DonationRepository;
 
-import java.util.Optional;
-
 @Service
 public class DonationService {
     private final DonationRepository donationRepository;
