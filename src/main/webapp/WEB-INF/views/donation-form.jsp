@@ -46,7 +46,7 @@
             <c:forEach items="${categories}" var="category">
                                 <div class="form-group form-group--checkbox">
                                     <label>
-                                       <form:checkbox path="categories" value="${category.id}" />
+                                       <form:checkbox path="categories" value="${category.id}" name="categories" data-category="${category.name}"/>
                                        <span class="checkbox"></span>
                                        <span class="description"><c:out value="${category.name}" /></span>
                                     </label>
@@ -66,7 +66,7 @@
               <label>
                 Liczba 60l worków:
                 <!-- <input type="number" name="bags" step="1" min="1" /> -->
-                <form:input path="quantity" type="number" step="1" min="1"/>
+                <form:input path="quantity" type="number" step="1" min="1" id="quantity" />
               </label>
             </div>
 
@@ -85,7 +85,7 @@
             <c:forEach items="${institutions}" var="institution">
             <div class="form-group form-group--checkbox">
                           <label>
-                            <form:radiobutton path="institution" value="${institution.id}"/>
+                            <form:radiobutton path="institution" value="${institution.id}" name="institution" data-institution="${institution.name}"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                               <div class="title"><c:out value="${institution.name}" /></div>
@@ -111,22 +111,22 @@
               <div class="form-section--column">
                 <h4>Adres odbioru</h4>
                 <div class="form-group form-group--inline">
-                  <label> Ulica <form:input path="street" /> </label>
+                  <label> Ulica <form:input path="street" id="street"/> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
-                  <label> Miasto <form:input path="city" /> </label>
+                  <label> Miasto <form:input path="city" id="city" /> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
                   <label>
-                    Kod pocztowy <form:input path="zipCode" />
+                    Kod pocztowy <form:input path="zipCode" id="zipCode" />
                   </label>
                 </div>
 
                 <div class="form-group form-group--inline">
                   <label>
-                    Numer telefonu <form:input path="phone" />
+                    Numer telefonu <form:input path="phone" id="phone"/>
                   </label>
                 </div>
               </div>
@@ -134,17 +134,17 @@
               <div class="form-section--column">
                 <h4>Termin odbioru</h4>
                 <div class="form-group form-group--inline">
-                  <label> Data <form:input path="pickUpDate" type="date" /> </label>
+                  <label> Data <form:input path="pickUpDate" type="date" id="pickUpDate"/> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
-                  <label> Godzina <form:input path="pickUpTime" type="time" /> </label>
+                  <label> Godzina <form:input path="pickUpTime" type="time" id="pickUpTime" /> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
                   <label>
                     Uwagi dla kuriera
-                    <form:textarea path="pickUpComment" rows="5" />
+                    <form:textarea path="pickUpComment" rows="5" id="pickUpComment"/>
                   </label>
                 </div>
               </div>
@@ -165,16 +165,12 @@
                 <ul>
                   <li>
                     <span class="icon icon-bag"></span>
-                    <span class="summary--text"
-                      >4 worki ubrań w dobrym stanie dla dzieci</span
-                    >
+                    <span class="summary--text" id="summary-quantity-categories"></span>
                   </li>
 
                   <li>
                     <span class="icon icon-hand"></span>
-                    <span class="summary--text"
-                      >Dla fundacji "Mam marzenie" w Warszawie</span
-                    >
+                    <span class="summary--text" id="summary-institution"></span>
                   </li>
                 </ul>
               </div>
@@ -183,19 +179,19 @@
                 <div class="form-section--column">
                   <h4>Adres odbioru:</h4>
                   <ul>
-                    <li>Prosta 51</li>
-                    <li>Warszawa</li>
-                    <li>99-098</li>
-                    <li>123 456 789</li>
+                    <li id="summary-street"></li>
+                    <li id="summary-city"></li>
+                    <li id="summary-zipCode"></li>
+                    <li id="summary-phone"></li>
                   </ul>
                 </div>
 
                 <div class="form-section--column">
                   <h4>Termin odbioru:</h4>
                   <ul>
-                    <li>13/12/2018</li>
-                    <li>15:40</li>
-                    <li>Brak uwag</li>
+                    <li id="summary-pickUpDate"></li>
+                    <li id="summary-pickUpTime"></li>
+                    <li id="summary-pickUpComment"></li>
                   </ul>
                 </div>
               </div>

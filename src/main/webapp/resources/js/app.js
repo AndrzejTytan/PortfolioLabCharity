@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$prev = form.querySelectorAll(".prev-step");
       this.$step = form.querySelector(".form--steps-counter span");
       this.currentStep = 1;
+      this.donation = {};
 
       this.$stepInstructions = form.querySelectorAll(".form--steps-instructions p");
       const $stepForms = form.querySelectorAll("form > div");
@@ -147,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
      * Update form front-end
      * Show next or previous section etc.
      */
+
     updateForm() {
       this.$step.innerText = this.currentStep;
 
@@ -164,9 +166,53 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+      if (this.currentStep === 2) {
+        const checkedCheckboxes = document.querySelectorAll("input[name='categories']:checked")
+        this.donation.categories = Array.from(checkedCheckboxes).map(checkbox => checkbox.getAttribute('data-category'))
+      } else if (this.currentStep === 3) {
+        this.donation.quantity = document.querySelector("#quantity").value
+      } else if (this.currentStep === 4) {
+        const checkedRadiobutton = document.querySelector("input[name='institution']:checked")
+        this.donation.institution = checkedRadiobutton.getAttribute('data-institution')
+      } else if (this.currentStep === 5) {
+        this.donation.street = document.querySelector("#street").value
+        this.donation.city = document.querySelector("#city").value
+        this.donation.zipCode = document.querySelector("#zipCode").value
+        this.donation.phone = document.querySelector("#phone").value
+        this.donation.pickUpDate = document.querySelector("#pickUpDate").value
+        this.donation.pickUpTime = document.querySelector("#pickUpTime").value
+        this.donation.pickUpComment = document.querySelector("#pickUpComment").value
 
+        console.log(this.donation);
+
+        document.querySelector("#summary-quantity-categories").textContent =
+            `Worków: ${this.donation.quantity} kategorii ${this.donation.categories}`
+
+        document.querySelector("#summary-institution").textContent =
+            `Dla fundacji ${this.donation.institution}`
+
+        document.querySelector("#summary-street").innerText =
+            `${this.donation.street}`
+
+        document.querySelector("#summary-city").innerText =
+            `${this.donation.city}`
+
+        document.querySelector("#summary-zipCode").innerText =
+            `${this.donation.zipCode}`
+
+        document.querySelector("#summary-phone").innerText =
+            `${this.donation.phone}`
+
+        document.querySelector("#summary-pickUpDate").innerText =
+            `${this.donation.pickUpDate}`
+
+        document.querySelector("#summary-pickUpTime").innerText =
+            `${this.donation.pickUpTime}`
+
+        document.querySelector("#summary-pickUpComment").innerText =
+            `${this.donation.pickUpComment}`
+      }
     }
-
   }
   const form = document.querySelector(".form--steps");
   if (form !== null) {
