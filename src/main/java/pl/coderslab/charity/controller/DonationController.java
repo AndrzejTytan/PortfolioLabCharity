@@ -13,7 +13,7 @@ import pl.coderslab.charity.repository.CategoryRepository;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.repository.InstitutionRepository;
 
-import javax.validation.Valid;;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
